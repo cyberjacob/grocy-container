@@ -1,21 +1,25 @@
 FROM php:7.3-apache
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev \
+    libpng-dev \
+    libldap-dev \
+    unzip \
+#    libsqlite3-dev \
+#    libxml2-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
       
 RUN docker-php-ext-install \
-    php7-ctype \
-    php7-fpm \
-    php7-exif \
-    php7-fileinfo \
-    php7-gd \
-    php7-iconv \
-    php7-json \
-    php7-ldap \
-    php7-pdo_sqlite \
-    php7-simplexml \
-    php7-tokenizer
+#    ctype \
+#    fpm \
+    exif \
+#    fileinfo \
+    gd \
+#    iconv \
+#    json \
+    ldap
+#    pdo_sqlite \
+#    simplexml \
+#    tokenizer
 
 RUN mkdir -p /grocy && \
         curl -o /grocy/grocy.zip -L "https://releases.grocy.info/latest"
@@ -24,7 +28,7 @@ WORKDIR /grocy
 RUN unzip grocy.zip
 
 RUN mkdir -p /config && \
-    cp /grocy/config-dist.php config.php && \
+    cp /grocy/config-dist.php /config/config.php && \
     ln -s /config/config.php /grocy/config.php
 
 # RUN chmod 777 -R .
