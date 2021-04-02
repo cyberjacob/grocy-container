@@ -27,7 +27,7 @@ RUN mkdir -p /grocy && \
 WORKDIR /grocy
 RUN unzip grocy.zip
 
-RUN ln -s /config /grocy/data &&
+RUN ln -s /config /grocy/data && \
     cp /grocy/config-dist.php /config/config.php
 #    ln -s /config/config.php /grocy/data/config.php
 #    ln -s /config/grocy.db /grocy/data/
