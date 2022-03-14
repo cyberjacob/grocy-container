@@ -13,7 +13,7 @@ RUN docker-php-ext-install \
 #    json \
     intl \
     exif \
-    zlib \
+#    zlib \
     gd \
     ldap
 
