@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
       
 RUN docker-php-ext-install \
-    json \
+#    json \
     intl \
     exif \
     zlib \
