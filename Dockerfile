@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -9,17 +9,12 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
       
 RUN docker-php-ext-install \
-#    ctype \
-#    fpm \
+    json \
+    intl \
     exif \
-#    fileinfo \
+    zlib \
     gd \
-#    iconv \
-#    json \
     ldap
-#    pdo_sqlite \
-#    simplexml \
-#    tokenizer
 
 RUN mkdir -p /grocy && \
         curl -o /grocy/grocy.zip -L "https://releases.grocy.info/latest"
